@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Rocket league{% endblock %}
+
+{% block body %}
+    <!-- Section: Blog v.2 -->
+    <section class="text-center my-5" style="background-color: #fff;">
+    <!-- Section description -->
+       
+        <!-- Grid row -->
+        <div style="width: 40%; margin: auto;">
+            {% for video in videosPublished %}
+
+                    <!-- Featured image -->
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="{{ video.finalurl }}" frameborder="0"
+                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen>
+                        </iframe>
+                    </div>
+
+                    <br>
+                    {% if (video.category != null) %}
+                    <a href="{{ path('single-category', {'id': video.category.id }) }}">
+                        Category : <h6 class="font-weight-bold mb-3" style="font-size: 21px;">{{ video.category.title }}</h6>
+                    </a>
+                    {% endif %}
+                    <h4 class="font-weight-bold mb-3"><strong>{{ video.title }}</strong></h4>
+                    <!-- Post data -->
+                    <p>by <a class="font-weight-bold" href="{{ path('user-profile', {'byid': video.user.id }) }}">{{ video.user.email }}</a></p>
+                    <!-- Read more button -->
+                    <a class="btn btn-danger btn-rounded btn-md" href="{{ path('video-id', {'byid': video.id }) }}">Click for more information</a>
+            <br/><br/><br/>
+            {% endfor %}
+
+        </div>
+        <!-- Grid row -->
+
+    </section>
+    <!-- Section: Blog v.2 -->
+{% endblock %}

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Admin Page{% endblock %}</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="{{ asset('logo/youtube.png') }}">
+    {% block stylesheets %}
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+        <!-- Bootstrap core CSS -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"
+              rel="stylesheet">
+        <!-- Material Design Bootstrap -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.6.1/css/mdb.min.css" rel="stylesheet">
+    {% endblock %}
+</head>
+<body>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+  <a class="navbar-brand waves-effect" href="/" target="_blank">
+            <img src="{{ asset('logo/rocket.png') }} " height="60px">
+        </a>
+    </div>
+
+    <div class="example-wrapper" style="font-size: 14px;">
+        {% if is_granted('ROLE_ADMIN') %}
+            Log in
+            <a style="font-size: 18px;" href="{{ path('admin-profile') }}" target="_blank">
+                <strong class="blue-text">{{ app.user.email }}</strong>
+            </a><br>
+            <a style="font-size: 18px;" href="{{ path('logout') }}" target="_blank">
+                <strong class="blue-text">Log out</strong>
+            </a>
+        {% else %}
+            <a style="font-size: 14px;" href="{{ path('login') }}" target="_blank">
+                <strong class="blue-text">Log in</strong>
+            </a><br>
+            <a style="font-size: 14px;" href="{{ path('register') }}" target="_blank">
+                <strong class="blue-text">Register</strong>
+            </a>
+        {% endif %}
+    </div>
+</nav>
+{% block message %}
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="alert alert-{{ label }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+{% endblock %}
+<!-- Navbar -->
+
+{% block accountnavigation %}
+    <!--Main Navigation-->
+    <header>
+
+        <!-- Sidebar -->
+        <div class="sidebar-fixed position-fixed"
+             style="z-index: 1030; margin: 90px 30px 30px 30px">
+
+            <a class="logo-wrapper waves-effect" style="margin-left: 45px;">
+                <img src="{{ asset('logo/logo-admin-png-4.png') }}"
+                     class="img-fluid" alt="">
+            </a>
+
+            <div class="list-group list-group-flush" style="width: 180px;">
+            
+
+                {% block account %}
+                    <a type="button" class="btn btn-dark" href="{{ path('admin-profile') }}">My account</a>
+                {% endblock %}
+
+                {% block users %}
+                    <a type="button" class="btn btn-dark" href="{{ path('admin-users') }}">Users (All) </a>
+                {% endblock %}
+
+                {% block video %}
+                    <a type="button" class="btn btn-dark" href="{{ path('admin-video') }}">Videos(All)</a>
+
+                {% endblock %}
+                {% block allcategory %}
+                    <a type="button" class="btn btn-dark" href="{{ path('admin-category') }}">Category(All)</a>
+
+                {% endblock %}
+                <br><br>
+                {% block adduser %}
+                    <a type="button" class="btn btn-dark" href="{{ path('add-user') }}">Add user</a>
+
+                {% endblock %}
+                {% block addvideo %}
+                    <a type="button" class="btn btn-dark" href="{{ path('admin-add-video') }}">Add Video </a>
+
+                {% endblock %}
+                {% block addcategory %}
+                    <a type="button" class="btn btn-dark" href="{{ path('add-category') }}">Add Category</a>
+
+                {% endblock %}
+            </div>
+        </div>
+        <!-- Sidebar -->
+
+    </header>
+    <!--Main Navigation-->
+
+{% endblock %}
+
+
+{% block body %}{% endblock %}
+{% block javascripts %}
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.6.1/js/mdb.min.js"></script>
+{% endblock %}
+
+</body>
+</html>

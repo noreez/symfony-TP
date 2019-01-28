@@ -1,0 +1,32 @@
+{% extends 'admin-template.html.twig' %}
+
+{% block title %}All users{% endblock %}
+
+{% block users %}
+    <a href="{{ path('admin-users') }}" class="list-group-item list-group-item-action waves-effect active">
+        <i class="fas fa-user mr-3"></i>All Users</a>
+{% endblock %}
+
+{% block namepage %}
+    <span>{{ namepage }}</span>
+{% endblock %}
+
+{% block body %}
+
+<br/>
+    <!-- List -->
+    <div style="width: 55%; margin: auto;">
+            {% for user in users %}
+                <button type="button" class="list-group-item list-group-item-action">{{ user.email }}
+                    <br>
+                    <a href="{{ path('admin-user', {'id': user.id}) }}" target="_blank">View
+                    </a>
+                    <a  href="{{ path('user-remove', {'id': user.id}) }}">Delete
+                      
+                    </a>
+                </button>
+            {% endfor %}
+    
+    </div>
+    <!-- List -->
+{% endblock %}

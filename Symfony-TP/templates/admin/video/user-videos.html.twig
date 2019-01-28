@@ -1,0 +1,40 @@
+{% extends 'admin-template.html.twig' %}
+
+{% block body %}
+
+    <div style="width: 55%; margin: auto;">
+        <br>
+        <div class="list-group">
+            <h2 align="center"><strong>Videos Published</strong></h2>
+            {% for video in videosPublished %}
+                {% if video.user.id == user.id %}
+                    <button type="button" class="list-group-item list-group-item-action">{{ video.title }}
+                        <br>
+                        <a  href="{{ path('admin-update-video',{'id':video.id}) }}">Update
+                        </a>
+                        <a  href="{{ path('video-remove', {'id': video.id}) }}">Delete
+                        </a>
+                    </button>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <br>
+        <br>
+        <div class="list-group">
+            <h2 align="center"><strong>Videos Not Published</strong></h2>
+            {% for video in videosNotPublished %}
+                {% if video.user.id == user.id %}
+                    <button type="button" class="list-group-item list-group-item-action">{{ video.title }}
+                        <br>
+                        <a  href="{{ path('user-update-video',{'id':video.id}) }}">Update
+                        </a>
+                        <a href="{{ path('user-remove-video', {'id': video.id}) }}">Delete
+                        </a>
+                    </button>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}
+

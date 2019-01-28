@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}User Page{% endblock %}</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="{{ asset('logo/youtube.png') }}">
+    {% block stylesheets %}
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+        <!-- Bootstrap core CSS -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"
+              rel="stylesheet">
+        <!-- Material Design Bootstrap -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.6.1/css/mdb.min.css" rel="stylesheet">
+    {% endblock %}
+</head>
+<body>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+        <a class="navbar-brand waves-effect" href="/" target="_blank">
+            <img src="{{ asset('logo/rocket.png') }} " height="60px">
+        </a>
+
+    <div class="example-wrapper" style="font-size: 14px;">
+        {% if is_granted('ROLE_USER') %}
+            Login at
+            <a style="font-size: 18px;" href="{{ path('my-account') }}" target="_blank">
+                <strong class="blue-text">{{ app.user.email }}</strong>
+            </a><br>
+            <a style="font-size: 18px;" href="{{ path('logout') }}" target="_blank">
+                <strong class="blue-text">Log out</strong>
+            </a>
+            {% else %}
+                <a style="font-size: 14px;" href="{{ path('login') }}" target="_blank">
+                    <strong class="blue-text">Log in</strong>
+                </a><br>
+                <a style="font-size: 14px;" href="{{ path('register') }}" target="_blank">
+                    <strong class="blue-text">Register</strong>
+                </a>
+        {% endif %}
+    </div>
+</nav>
+<br><br><br>
+{% block message %}
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="alert alert-{{ label }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+{% endblock %}
+<!-- Navbar -->
+
+{% block accountnavigation %}
+    <!--Main Navigation-->
+    <header>
+
+        <!-- Sidebar -->
+        <div class="sidebar-fixed "
+             style="position: absolute; z-index: 1030; margin: 90px 30px 30px 30px">
+                <br><br>
+
+                {% block account %}
+                    <a type="button" class="btn btn-dark" href="{{ path('my-account') }}">My account</a>
+                {% endblock %}
+                <br><br>
+
+                {% block video %}
+                    <a type="button" class="btn btn-dark" href="{{ path('user-video') }}" >My Videos</a>
+                {% endblock %}
+
+                <br><br>
+                {% block addvideo %}
+                    <a type="button" class="btn btn-dark" href="{{ path('user-add-video') }}"> Add Video</a>
+                {% endblock %}
+       
+
+    </header>
+    <!--Main Navigation-->
+<br/>
+
+{% endblock %}
+
+
+{% block body %}{% endblock %}
+{% block javascripts %}
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.6.1/js/mdb.min.js"></script>
+{% endblock %}
+
+
+
+</body>
+</html>

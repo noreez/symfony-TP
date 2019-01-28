@@ -1,0 +1,36 @@
+{% extends 'admin-template.html.twig' %}
+
+
+
+{% block body %}
+
+
+    <div class="example-wrapper" style="width: 55%; margin: auto; padding: 20px; background-color: #fff">
+
+        {{ form_start(form) }}
+        {{ form_errors(form) }}
+
+        <div>
+            {{ form_label(form.title) }}
+            {{ form_errors(form.title) }}
+            {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+            {{ form_help(form.title) }}
+        </div>
+
+        <div>
+            {{ form_label(form.description) }}
+            {{ form_errors(form.description) }}
+            {{ form_widget(form.description, {'attr': {'class': 'form-control rounded-0 h-75'}}) }}
+            {{ form_help(form.description) }}
+        </div>
+
+        <div>
+            {{ form_widget(form.submit, {'attr': {'class': 'btn btn-danger'}}) }}
+        </div>
+
+        {{ form_end(form) }}
+
+
+    </div>
+
+{% endblock %}

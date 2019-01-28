@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User {{ user.firstname }}{% endblock %}
+
+{% block body %}
+    <br>
+    <div class="example-wrapper">
+        <div style="width: 55%; margin: auto; padding: 20px; background-color: #fff">
+            <h1 align="center"><strong> {{ user.email }} </strong></h1>
+            <br>
+            <strong>Firstname :</strong>  {{ user.firstname }} <br>
+            <strong>Lastname :</strong>  {{ user.lastname }} <br>
+            <strong>Email :</strong>  {{ user.email }} <br>
+            <strong>Birthday :</strong>  {{ user.birthday|date }} 
+            <br>
+        </div>
+    </div>
+{% endblock %}

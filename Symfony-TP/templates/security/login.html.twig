@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Login {% endblock %}
+
+{% block body %}
+    {% if (error == null) %}
+    {% else %}
+        <div class="alert alert-danger">
+            {{ error }}
+        </div>
+    {% endif %}
+
+    <div class="example-wrapper">
+
+        <div class="example-wrapper" style="width: 70%; margin: auto">
+            <h1 align="center"><strong>Login </strong></h1>
+
+            {{ form_start(form) }}
+            {{ form_errors(form) }}
+
+            <br>
+            <div>
+                {{ form_label(form.email) }}
+                {{ form_errors(form.email) }}
+                {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+                {{ form_help(form.email) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.password) }}
+                {{ form_errors(form.password) }}
+                {{ form_widget(form.password, {'attr': {'class': 'form-control'}}) }}
+                {{ form_help(form.password) }}
+            </div>
+            <div>
+                {{ form_widget(form.submit, {'attr': {'class': 'btn btn-danger'}}) }}
+            </div>
+
+            {{ form_end(form) }}
+            
+            <center><img src="{{ asset('logo/bg.jpg') }} " height="200px"></center>
+
+
+        </div>
+
+    </div>
+{% endblock %}

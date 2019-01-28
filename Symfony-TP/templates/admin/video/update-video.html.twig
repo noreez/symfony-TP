@@ -1,0 +1,64 @@
+{% extends 'admin-template.html.twig' %}
+
+
+{% block body %}
+
+    <!-- Update -->
+    <div class="example-wrapper" style="width: 55%; margin: auto; padding: 20px; background-color: #fff">
+
+        {{ form_start(form) }}
+        {{ form_errors(form) }}
+
+        <div>
+            {{ form_label(form.title, 'Title Video') }}
+            {{ form_errors(form.title) }}
+            {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+            {{ form_help(form.title) }}
+        </div>
+
+        <div>
+            {{ form_label(form.url) }}
+            {{ form_errors(form.url) }}
+            {{ form_widget(form.url, {'attr': {'class': 'form-control'}}) }}
+            {{ form_help(form.url) }}
+        </div>
+        <br>
+        <div>
+            {{ form_label(form.published) }}
+            {{ form_errors(form.published) }}
+            {{ form_widget(form.published, {'attr': {'class': 'form-control h-50 w-50'}}) }}
+            {{ form_help(form.published) }}
+        </div>
+
+        <div style="height: 120px;">
+            {{ form_label(form.createdAt) }}
+            {{ form_errors(form.createdAt) }}
+            {{ form_widget(form.createdAt) }}
+            {{ form_help(form.createdAt) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.description) }}
+            {{ form_errors(form.description) }}
+            {{ form_widget(form.description, {'attr': {'class': 'form-control rounded-0 h-75'}}) }}
+            {{ form_help(form.description) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.category) }}
+            {{ form_errors(form.category) }}
+            {{ form_widget(form.category, {'attr': {'class': 'form-control rounded-0 h-75'}}) }}
+            {{ form_help(form.category) }}
+        </div>
+
+        <div>
+            {{ form_widget(form.submit, {'attr': {'class': 'btn btn-danger'}}) }}
+        </div>
+
+        {{ form_end(form) }}
+
+
+    </div>
+    <!-- Update -->
+
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+<div class="example-wrapper">
+   
+    <div class="example-wrapper" style="width: 70%; margin: auto">
+        <h1 align="center"><strong>Register</strong></h1>
+
+        {{ form_start(form) }}
+        {{ form_errors(form) }}
+
+        <div>
+            {{ form_label(form.firstname) }}
+            {{ form_errors(form.firstname) }}
+            {{ form_widget(form.firstname, {'attr': {'class': 'form-control'}}) }}
+            {{ form_help(form.firstname) }}
+        </div>
+
+        <div>
+            {{ form_label(form.lastname) }}
+            {{ form_errors(form.lastname) }}
+            {{ form_widget(form.lastname, {'attr': {'class': 'form-control'}}) }}
+            {{ form_help(form.lastname) }}
+        </div>
+        <br>
+        <div>
+            {{ form_label(form.email) }}
+            {{ form_errors(form.email) }}
+            {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+            {{ form_help(form.email) }}
+        </div>
+
+        <div>
+            {{ form_label(form.birthday) }}
+            {{ form_errors(form.birthday) }}
+            {{ form_widget(form.birthday) }}
+            {{ form_help(form.birthday) }}
+        </div>
+
+        <br/>
+
+        <div>
+            {{ form_errors(form.password) }}
+            {{ form_widget(form.password) }}
+            {{ form_help(form.password) }}
+        </div>
+        <div>
+            {{ form_widget(form.submit, {'attr': {'class': 'btn btn-danger'}}) }}
+        </div>
+
+        {{ form_end(form) }}
+
+         <img src="{{ asset('logo/octane.jpg') }} " height="200px"; style="margin-left:50%; margin-top:-20%;">
+
+    </div>
+
+</div>
+{% endblock %}

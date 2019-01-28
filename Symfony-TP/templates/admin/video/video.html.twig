@@ -1,0 +1,44 @@
+{% extends 'admin-template.html.twig' %}
+
+{% block title %}All video{% endblock %}
+
+{% block body %}
+
+    <!-- List -->
+    <div style="width: 55%; margin: auto;">
+        <div class="card-body">
+            <div class="list-group">
+                <h2 align="center"><strong>Videos Published</strong></h2>
+                {% for video in videosPublished %}
+                    <br>
+                    <button type="button" class="list-group-item list-group-item-action">{{ video.title }}
+                        <br>
+                        Author : {{ video.user.email }}
+                        <br>
+                        <a href="{{ path('admin-update-video',{'id':video.id}) }}">Update
+                        </a>
+                        <a  href="{{ path('video-remove', {'id': video.id}) }}">Delete
+                        </a>
+                    </button>
+                {% endfor %}
+            </div>
+            <br>
+            <div class="list-group">
+                <h2 align="center"><strong>Videos Not Published</strong></h2>
+                {% for video in videosNotPublished %}
+                    <br>
+                    <button type="button" class="list-group-item list-group-item-action">{{ video.title }}
+                        <br>
+                        Author : {{ video.user.email }}
+                        <br>
+                        <a  href="{{ path('admin-update-video',{'id':video.id}) }}">Update
+                        </a>
+                        <a  href="{{ path('video-remove', {'id': video.id}) }}">Delete
+                        </a>
+                    </button>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}My Blog{% endblock %}
+
+{% block body %}
+    <section class="text-center my-5" style="background-color: #fff;">
+        <!-- Section heading -->
+        <h2 class="h1-responsive font-weight-bold my-5" style="padding-top: 25px;">{{ category.title }}</h2>
+
+        <div  style="width: 40%; margin: auto;">
+            {% for video in videos %}
+
+                    <!-- Featured image -->
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="{{ video.finalurl }}" frameborder="0"
+                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen>
+                        </iframe>
+                    </div>
+
+                    <br>
+                    <!-- Post title -->
+                    <h4 class="font-weight-bold mb-3"><strong>{{ video.title }}</strong></h4>
+                    <!-- Post data -->
+                    <p>by <a class="font-weight-bold"
+                             href="{{ path('user-profile', {'byid': video.user.id }) }}">{{ video.user.email }}</a>
+                    </p>
+                    <!-- Description -->
+                    <p class="dark-grey-text">{{ video.description }}</p>
+                    <!-- Read more button -->
+                    <a class="btn btn-danger"
+                       href="{{ path('video-id', {'byid': video.id }) }}">Click for more information</a>
+
+                <br/> <br/> <br/>
+            {% endfor %}
+
+        </div>
+        <!-- Grid row -->
+
+    </section>
+    <!-- Section: Blog v.2 -->
+{% endblock %}
